@@ -1,8 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './src/index.css';
-import App from './src/App';
-import registerServiceWorker from './src/registerServiceWorker';
+const express=require("express")
+const app = express()
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+app.use(express.static(public))
+
+app.listen(process.env.PORT || 8080, ()=>console.log("all perfect"))
