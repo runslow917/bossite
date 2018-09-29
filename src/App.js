@@ -9,7 +9,7 @@ import 'react-responsive-carousel/lib/styles/carousel.css';
 
 function importAll(r) {
   let images = {};
-  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); return images});
   return images;
 }
 const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
@@ -25,7 +25,7 @@ class App extends Component {
   increase = () => {
     let percent = this.state.percent + Math.random();
     if (percent > 100) {
-      this.state.show = false;
+      this.setState({show:false})
       clearInterval(this.interval_id);
     }
     this.setState({ percent });
